@@ -11,6 +11,7 @@ import java.util.TimerTask;
 
 public class imagenPrincipal extends Activity {
 
+    //Declaro una constante para el tiempo de retraso en milisegundos.
     private long TIEMPO_RETRASO = 3000;
 
     @Override
@@ -18,14 +19,18 @@ public class imagenPrincipal extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_imagen_principal);
 
+        //Creo un objeto de tipo TimerTask con el que una vez pasado el tiempo, cambio de activity.
         TimerTask task = new TimerTask(){
             public void run(){
                 Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                //Cambio del activity imagenPrincipal al activity MainActivity.
                 startActivity(mainIntent);
+                //Lo finalizo
                 finish();
             }
         };
 
+        //Creo un objeto de tipo Timer para poder hacer uso de un contador.
         Timer timer = new Timer();
         timer.schedule(task, TIEMPO_RETRASO);
     }
